@@ -41,6 +41,8 @@ class MinStack {
          * 原因如下: Java中 Integer在常量池中的存储范围为[-128,127]，127在这范围内，因此是直接存储于常量池的，
          * 而超过127的值不在这范围内，所以会在堆内存中创建一个新的对象来保存这个值， 所以m，n分别指向了两个不同的对象地址，故而导致了不相等。
          * 
+         * 关联知识点:
+         * https://blog.csdn.net/lcsy000/article/details/82782864
          */
         if (mainStack.pop().equals(minStack.peek())) {
             minStack.pop();
