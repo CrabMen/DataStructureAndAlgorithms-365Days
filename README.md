@@ -18,7 +18,7 @@
   
 **Tips:**  
 - 有更好的解题思路或者是代码中有错误的话,欢迎提**contribution**或者[issue](https://github.com/CrabMen/DataStructureAndAlgorithms-365Days/issues)
-- 如果改仓库对您哪怕有一奈奈的帮助,欢迎**⭐️star**
+- 如果该仓库对您哪怕有一奈奈的帮助,欢迎**⭐️star**
 
 **最后:** 最近看了一部电视剧《我是余欢水》,结局里面一段话不错,送给你们
 
