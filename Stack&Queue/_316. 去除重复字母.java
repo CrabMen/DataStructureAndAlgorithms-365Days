@@ -56,7 +56,7 @@ class Solution {
                 // 2. is greater than c so removing it will make the string smaller
                 // 3. it's not the last occurrence
                 // we remove it from the solution to keep the solution optimal
-                while (!stack.isEmpty() && c > stack.peek() && map.get(stack.peek()) > i) {
+                while (!stack.isEmpty() && c < stack.peek() && map.get(stack.peek()) > i) {
                     set.remove(stack.pop());
                 }
                 set.add(c);

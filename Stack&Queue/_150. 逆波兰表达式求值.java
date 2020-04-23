@@ -25,7 +25,9 @@ import java.util.Stack;
  */
 
 /**
- * 该题主要考察的是逆序表达式的运算方式
+ * 该题主要考察的是逆序表达式的运算方式 
+ * 
+ * 唯一需要注意的是 num1 和 num2 的顺序不要搞错了 先pop出来的是num2 ,第二次pop出来的是num1 ,然后  num1 <运算符> num2
  * 
  * 后缀表达式的计算 https://blog.csdn.net/qq_21515253/article/details/96484567
  */
