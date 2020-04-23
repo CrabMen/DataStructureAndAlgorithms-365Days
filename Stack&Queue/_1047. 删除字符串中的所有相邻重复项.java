@@ -1,3 +1,6 @@
+import java.util.Stack;
+
+import javax.print.StreamPrintService;
 
 /**
  * 给出由小写字母组成的字符串 S，重复项删除操作会选择两个相邻且相同的字母，并删除它们。
@@ -24,12 +27,15 @@
  * 
  */
 
-
 /**
  * 
  * 并没有想着使用栈,看到题目的第一个想法就是直接遍历,qaq
  * 
-*/
+ * 执行用时 : 15 ms , 在所有 Java 提交中击败了 80.24% 的用户
+ * 
+ * 内存消耗 : 40.3 MB , 在所有 Java提交中击败了7.69% 的用户
+ * 
+ */
 
 class Solution {
     public String removeDuplicates(String S) {
@@ -37,14 +43,41 @@ class Solution {
         StringBuffer string = new StringBuffer();
         for (int i = 0; i < array.length; i++) {
             char c = array[i];
-           if(string.length() == 0 || string.charAt(string.length() - 1) != c){
+            if (string.length() == 0 || string.charAt(string.length() - 1) != c) {
                 string.append(c);
-           } else {
-               string.deleteCharAt(string.length()-1);
-           }
+            } else {
+                string.deleteCharAt(string.length() - 1);
+            }
         }
         return string.toString();
     }
 
 }
 
+/**
+ * 官方使用栈的解法
+ * 
+ * 使用栈去解决这个问题 执行用时 : 29 ms , 在所有 Java 提交中击败了 62.54% 的用户
+ * 
+ * 内存消耗 : 40.8 MB , 在所有Java 提交中击败了 7.69% 的用户
+ */
+
+class Solution {
+    public String removeDuplicates(String S) {
+        char[] array = S.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < array.length; i++) {
+            if (stack.isEmpty() || array[i] != stack.peek()) {
+                stack.push(array[i]);
+            } else {
+                stack.pop();
+            }
+        }
+        StringBuffer str = new StringBuffer();
+        for (Character character : stack) {
+            str.append(character);
+        }
+        return str.toString();
+    }
+
+}
