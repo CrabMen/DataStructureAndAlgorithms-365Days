@@ -1,7 +1,7 @@
 #!/bin/sh
 git filter-branch --env-filter '
 
-OLD_EMAIL="tobecrabman@163.com"
+OLD_EMAIL="crabman@guoqiangdeMacBook-Pro-2.local"
 CORRECT_NAME="CrabMen"
 CORRECT_EMAIL="tobecrabman@163.com"
 
