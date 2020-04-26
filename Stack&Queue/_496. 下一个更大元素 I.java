@@ -63,7 +63,7 @@ class Solution {
         // 遍历num1(为num2的子集),求出比当前元素在num2中的位置,大的下一个元素
         int[] array = new int[nums1.length];
         for (int i = 0; i < nums1.length; i++) {
-            nums1[i] = map.get(nums1[i]);
+            array[i] = map.get(nums1[i]);
         }
         return array;
     }
