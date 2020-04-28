@@ -40,6 +40,9 @@ import java.util.Stack;
  * num1其实是迷惑行为,只要找到上方的要求,再遍历num1就可以
  */
 
+
+
+// (栈的经典用法)
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
 

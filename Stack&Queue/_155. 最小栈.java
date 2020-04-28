@@ -18,8 +18,8 @@ import java.util.Stack;
 
 class MinStack {
 
-    Stack<Integer> mainStack = new Stack<Integer>();
-    Stack<Integer> minStack = new Stack<Integer>();
+    Stack<Integer> mainStack = new Stack<>();
+    Stack<Integer> minStack = new Stack<>();
 
     /** initialize your data structure here. */
     public MinStack() {
