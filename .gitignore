@@ -24,8 +24,8 @@ hs_err_pid*
 
 
 # Mac OS file
-*/.DS_Store
+*.DS_Store
 
 #VSCode file git
-*/.vscode 
+*.vscode/ 
 
