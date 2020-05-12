@@ -1,7 +1,5 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 import list.List;
 
@@ -22,20 +20,18 @@ import list.List;
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
-        List<Integer> row = new ArrayList<>();
-
         int r = 0, c = 0;
         for (int i = 0; i < numRows; i++) {
-            row.clear();
+            List<Integer> row = new ArrayList<>();
             for (int j = 0; j <= i; j++) {
-                if (i > 0 && j > 0 && j < i) {
+                if (i > 0 && j > 0 && j< i) {
                     Integer num = result.get(i - 1).get(j) + result.get(i - 1).get(j - 1);
                     row.add(num);
                 } else {
                     row.add(1);
                 }
             }
-            result.add(Collections.copy(row));
+            result.add(row);
         }
         return result;
     }
