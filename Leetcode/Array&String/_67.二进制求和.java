@@ -62,20 +62,40 @@ import java.math.BigInteger;
 /**
  * xor计算 一脸懵逼
  * 
-*/
+ * 
+ * 
+ * 把 aa 和 bb 转换成整型数字 xx 和 yy，xx 保存结果，yy 保存进位。
+ * 
+ * 当进位不为 0：y != 0：
+ * 
+ * 计算当前 xx 和 yy 的无进位相加结果：answer = x^y。
+ * 
+ * 计算当前 xx 和 yy 的进位：carry = (x & y) << 1。
+ * 
+ * 完成本次循环，更新 x = answer，y = carry。
+ * 
+ * 返回 xx 的二进制形式。
+ * 
+ * 作者：LeetCode
+ * 链接：https://leetcode-cn.com/problems/add-binary/solution/er-jin-zhi-qiu-he-by-leetcode/
+ * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+ * 
+ * 
+ */
 class Solution {
     public String addBinary(String a, String b) {
-      BigInteger x = new BigInteger(a, 2);
-      BigInteger y = new BigInteger(b, 2);
-      BigInteger zero = new BigInteger("0", 2);
-      BigInteger carry, answer;
-      while (y.compareTo(zero) != 0) {
-        answer = x.xor(y);
-        carry = x.and(y).shiftLeft(1);
-        x = answer;
-        y = carry;
-      }
-      return x.toString(2);
+        BigInteger x = new BigInteger(a, 2);
+        BigInteger y = new BigInteger(b, 2);
+        BigInteger zero = new BigInteger("0", 2);
+        BigInteger carry, answer;
+        // 无操作符的加法运算
+        while (y.compareTo(zero) != 0) {
+            answer = x.xor(y);
+            carry = x.and(y).shiftLeft(1);
+            x = answer;
+            y = carry;
+        }
+
+        return x.toString(2);
     }
-  }
- 
+}
