@@ -1,7 +1,5 @@
 import java.util.Stack;
 
-import apple.laf.JRSUIConstants.Size;
-
 /**
  * 使用栈实现队列的下列操作：
  * 
