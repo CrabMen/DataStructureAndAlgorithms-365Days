@@ -8,7 +8,7 @@ git update-ref -d refs/original/refs/heads/master
 
 git filter-branch --env-filter '
 
-OLD_EMAIL="tobecrabman@163.com"
+OLD_EMAIL="rabman@guoqiangdeMacBook-Pro-2.local"
 CORRECT_NAME="CrabMen"
 CORRECT_EMAIL="tobecrabman@163.com"
 
