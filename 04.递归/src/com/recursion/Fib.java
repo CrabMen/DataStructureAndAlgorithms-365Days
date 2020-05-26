@@ -13,6 +13,13 @@ public class Fib {
         Times.test("fib2", () -> {
             System.out.println(fib.fib2(n));
         });
+        Times.test("fib3", () -> {
+            System.out.println(fib.fib3(n));
+        });
+        Times.test("fib4", () -> {
+            System.out.println(fib.fib4(n));
+        });
+
     }
 
     int fib0(int n) {
@@ -58,6 +65,31 @@ public class Fib {
         for (int i = 3; i <= n; i++)
             visited[i % 2] = visited[(i - 1) % 2] + visited[(i - 2) % 2];
         return visited[n % 2];
+    }
+
+    // fib3 中针对数组进行了优化,当然还有下面的写法
+    int fib4(int n) {
+        if (n <= 2)
+            return 1;
+        int first = 1, second = 1, sum;
+        for (int i = 3; i <= n; i++) {
+            sum = first + second;
+            first = second;
+            second = sum;
+        }
+        return second;
+    }
+
+    // 使用动态规划求解
+    int fib5(int n) {
+        if (n <= 2)
+            return 1;
+        int[] dp = new int[n + 1];
+        dp[1] = dp[2] = 1;
+        for (int i = 3; i <= n; i++) 
+            dp[i] = dp[i - 1] + dp[i - 2];
+        
+        return dp[n];
     }
 
 }
