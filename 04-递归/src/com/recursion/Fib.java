@@ -86,9 +86,19 @@ public class Fib {
             return 1;
         int[] dp = new int[n + 1];
         dp[1] = dp[2] = 1;
-        for (int i = 3; i <= n; i++) 
+        for (int i = 3; i <= n; i++)
             dp[i] = dp[i - 1] + dp[i - 2];
         return dp[n];
     }
 
+    // 看到一个大佬的算法,可能需要慢慢理解,处理了递归基,省去了判断
+    int fib6(int n) {
+        int a = 0, b = 1, sum;
+        for (int i = 0; i < n; i++) {
+            sum = a + b;
+            a = b;
+            b = sum;
+        }
+        return a;
+    }
 }
