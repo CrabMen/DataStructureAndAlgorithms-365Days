@@ -15,11 +15,9 @@
  * 
  * 注意:
  * 
-
- *  
  * 你可以假设：
  * 
- * 0 <= n (总金额) <= 1000000 
+ * 0 <= n (总金额) <= 1000000
  * 
  * 通过次数16,834提交次数32,983
  * 
@@ -29,6 +27,18 @@
 
 class Solution {
     public int waysToChange(int n) {
-      
+        int[] dp = new int[n + 1];
+        int[] coins = { 1, 5, 10, 25 };
+        int count = 0;
+        for (int i = 0; i <= n; i++) {
+            for (int coin : coins) {
+                if (i >= coin) {
+                    dp[coin] = 1;
+                    count += dp[i - coin];
+                }
+            }
+            count++;
+        }
+        return count;
     }
 }
