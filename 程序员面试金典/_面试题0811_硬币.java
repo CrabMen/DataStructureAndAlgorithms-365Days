@@ -29,16 +29,13 @@ class Solution {
     public int waysToChange(int n) {
         int[] dp = new int[n + 1];
         int[] coins = { 1, 5, 10, 25 };
-        int count = 0;
-        for (int i = 0; i <= n; i++) {
-            for (int coin : coins) {
-                if (i >= coin) {
-                    dp[coin] = 1;
-                    count += dp[i - coin];
-                }
+        dp[0] = 1;
+        for (int coin : coins) {
+            for (int i = 1; i <= n; i++) {
+                if (i >= coin) 
+                    dp[i] = (dp[i] + dp[i - coin]) %1000000007;
             }
-            count++;
         }
-        return count;
+        return dp[n] ;
     }
 }
