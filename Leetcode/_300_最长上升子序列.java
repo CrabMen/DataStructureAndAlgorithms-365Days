@@ -17,21 +17,33 @@
  */
 
 class Solution {
-    public int lengthOfLIS(int[] nums) {
 
+    public int lengthOfLIS(int[] nums) {
         if (nums.length == 0 || nums == null)
             return 0;
-        int[] dp = new int[nums.length + 1];
-        int max = dp[0] = 1;
+        return lengthOfLIS_dp(nums);
+    }
+
+    /**
+     * 动态规划解法
+     * 
+     * 查看动态规划文件夹下方法的LIS.java 
+     * 
+     */
+    static int lengthOfLIS_dp(int[] nums) {
+
+        int[] dp = new int[nums.length];
+        int max = dp[0] = 1; // 递归基
         for (int i = 1; i < nums.length; i++) {
-            dp[i] = 1;
-            for (int j = 1; j < i; j++) {
+            dp[i] = 1; // 初始值为1
+            for (int j = 0; j < i; j++) {
                 if (nums[i] <= nums[j])
                     continue;
                 dp[i] = Math.max(dp[i], dp[j] + 1);
             }
-            max = Math.max(dp[i], max);
+            max = Math.max(max, dp[i]);
         }
         return max;
     }
+
 }
