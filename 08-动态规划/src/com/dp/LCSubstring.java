@@ -1,6 +1,6 @@
 public class LCSubstring {
     public static void main(String[] args) {
-        System.out.println(lcstring_dp1("ABCBA", "BABC"));
+        System.out.println(lcstring_dp2("ABCBA", "BABC"));
     }
 
     static int lcstring_dp0(String str1, String str2) {
@@ -54,6 +54,37 @@ public class LCSubstring {
                     dp[col] = leftTop + 1;
                 }
 
+                max = Math.max(dp[col], max);
+            }
+        }
+        return max;
+    }
+
+    //掌握了0-1 背包问题后,可以使用同样的for循环递减的方式对该题进行优化
+    static int lcstring_dp2(String str1, String str2) {
+        if (str1 == null || str2 == null)
+            return 0;
+        if (str1.length() == 0 || str2.length() == 0)
+            return 0;
+        char[] char1 = str1.toCharArray();
+        char[] char2 = str2.toCharArray();
+        char[] rowChars = char1, colsChars = char2;
+        if (char1.length < char2.length) {
+            colsChars = char1;
+            rowChars = char2;
+        }
+
+        // 代表以i和j结尾的公共子串
+        int[] dp = new int[colsChars.length + 1];
+        int max = 0;
+        for (int row = 1; row <= rowChars.length; row++) {
+            int cur = 0;
+            for (int col = colsChars.length; col >= 1; col--) {
+                if (char1[row - 1] != char2[col - 1]) {
+                    dp[col] = 0; //数组默认虽然为零,但是因为是重复使用的原因,需要对之前可能的值进行覆盖,进行重置
+                } else {
+                    dp[col] = dp[col-1] + 1;
+                }
                 max = Math.max(dp[col], max);
             }
         }
