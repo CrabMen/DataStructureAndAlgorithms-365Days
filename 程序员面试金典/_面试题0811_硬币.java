@@ -17,12 +17,25 @@
  * 
  * 你可以假设：
  * 
- * 0 <= n (总金额) <= 1000000 通过次数16,834提交次数32,983
+ * 0 <= n (总金额) <= 1000000
+ * 
+ * 通过次数16,834提交次数32,983
+ * 
+ * 
  * 
  */
 
 class Solution {
     public int waysToChange(int n) {
-      
+        int[] dp = new int[n + 1];
+        int[] coins = { 1, 5, 10, 25 };
+        dp[0] = 1;
+        for (int coin : coins) {
+            for (int i = 1; i <= n; i++) {
+                if (i >= coin) 
+                    dp[i] = (dp[i] + dp[i - coin]) %1000000007;
+            }
+        }
+        return dp[n] ;
     }
 }
