@@ -138,15 +138,15 @@ public class LCS {
             int preRow = (i - 1) & 1;
             for (int j = 1; j <= char2.length; j++) {
                 if (char1[i - 1] == char2[j - 1]) {
-                    dp[row][j] = dp[preRow][j - 1] + 1;
+                    dp[row] = dp[preRow] + 1;
                 } else {
-                    dp[row][j] = Math.max(dp[preRow][j], dp[row][j - 1]);
+                    dp[row] = Math.max(dp[preRow], dp[row]);
                 }
-                System.out.println("dp2的方法 --- dp["+row+"]["+j+"]"+ dp[row][j]);
+                System.out.println("dp2的方法 --- "+ dp[row]);
 
             }
         }
-        return dp[char1.length & 1][char2.length];
+        return dp[char1.length & 1];
     }
 
 }
