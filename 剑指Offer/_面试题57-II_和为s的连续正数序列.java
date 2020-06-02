@@ -30,12 +30,7 @@ import java.util.List;
 
 class Solution {
     public int[][] findContinuousSequence(int target) {
-        // 题干给出的条件为 1 <= target <= 10^5  
-        List<int[]> result = new LinkedList<>();
-        if (target < 3)
-            return result.toArray(new int[result.size()][]);
-
-
+      
     }
 
 }
