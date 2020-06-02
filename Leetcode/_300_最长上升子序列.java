@@ -27,7 +27,7 @@ class Solution {
     /**
      * 动态规划解法
      * 
-     * 查看动态规划文件夹下方法的LIS.java 
+     * 查看动态规划文件夹下方法的LIS.java
      * 
      */
     static int lengthOfLIS_dp(int[] nums) {
@@ -44,6 +44,37 @@ class Solution {
             max = Math.max(max, dp[i]);
         }
         return max;
+
     }
+
+
+    /**
+     * 
+     * 时间复杂度为 O( nlogn(n) ) 
+     * 
+	 * 对牌顶数组的操作(遍历数组并查找合适的位置)可以是用二分法优化
+	 */
+	static int lengthOfLIS_pile(int[] nums) {
+		int len = 0; // 牌堆的数量
+        int[] top = new int[nums.length]; // 牌顶数组
+        int begin,end;    //将变量提出来,节省空间
+		for (int num : nums) {
+             begin = 0 ;
+             end = len;
+			while (begin < end) {
+				int mid = (begin + end) >> 1;
+				if (num <= top[mid]) {
+					end = mid;
+				} else {
+					begin = mid + 1;
+				}
+			}
+			// 覆盖牌顶
+			top[begin] = num;
+			if(begin == len) len++; 
+		}
+		return len;
+	}
+
 
 }
