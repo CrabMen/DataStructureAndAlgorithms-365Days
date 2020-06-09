@@ -22,11 +22,12 @@ public class Main {
 			Asserts.test(Integers.isAscOrder(newArray));
 		}
 		Arrays.sort(sorts);
-		
+
 		System.out.println("------------------------------------------------------------------");
 
 		for (Sort sort : sorts) {
 			System.out.println(sort);
 		}
 	}
+
 }
