@@ -1,5 +1,4 @@
-package com;
-
+import com.sequence.KMP;
 import com.tools.Asserts;
 
 public class Main {

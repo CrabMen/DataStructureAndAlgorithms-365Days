@@ -1,4 +1,4 @@
-package com;
+package com.sequence;
 
 public class KMP {
 
