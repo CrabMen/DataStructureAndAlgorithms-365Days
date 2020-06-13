@@ -16,19 +16,24 @@
  * 来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/merge-sorted-array
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * 
- * 
+ *
  */
 
+/**
+ * 
+ *  
+ * 题目分析: 数组类似的排序的问题基本都可以通过双指针或者是三指针解决
+ * 十大排序中归并排序的思想  
+ */
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int idx1 = m - 1, idx2 = n - 1, cur = nums1.length - 1;
         while (idx2 >= 0) {
-            if (idx1 >= 0 && nums1[idx1] > nums2[idx2]) {
-                nums1[cur--] = nums1[idx1--];
+            if (idx1 >= 0 && nums1[idx1] < nums2[idx2]) {
+                nums[cur--] = nums1[idx1];
             } else {
-                nums1[cur--] = nums2[idx2--];
+                nums[cur--] = nums2[idx2];
             }
-
         }
     }
 }
