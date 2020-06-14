@@ -34,6 +34,9 @@ public class Solution {
         while (pointerA != pointerB) {
             pointerA = pointerA == null ? headB : pointerA.next;
             pointerB = pointerB == null ? headA : pointerB.next;
+            // 如果两个不相交的链表就会死循环
+            // pointerA = pointerA.next == null ? headB : pointerA.next;
+            // pointerB = pointerB.next == null ? headA : pointerB.next;
         }
 
         return pointerA;
@@ -42,7 +45,7 @@ public class Solution {
     static ListNode getIntersectionNode_map(ListNode headA, ListNode headB) {
         ListNode nodeA = headA;
         ListNode nodeB = headB;
-        HashMap<ListNode,ListNode> map = new HashMap<>();
+        HashMap<ListNode, ListNode> map = new HashMap<>();
 
         while (nodeA != null) {
             map.put(nodeA, nodeA.next);
@@ -56,4 +59,9 @@ public class Solution {
         return null;
     }
 
+    A ____
+    _________ 
+
+  B
+    _________ ____
 }
