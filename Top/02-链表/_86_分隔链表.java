@@ -10,6 +10,8 @@
  * 
  * 来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/partition-list
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ * 
+ * 面试题 02.04. 分割链表
  */
 
 // Definition for singly-linked list.
@@ -46,6 +48,8 @@ class Solution {
          * 原链表倒数第N个节点A的值是>=x的,A后面所有节点的值都是<x的
          * 
          * 然后rTail.next最终其实就是A.next
+         * 
+         * 需要对右侧链表置空并拼接
          */
         rTail.next = null;
         lTail.next = rHead.next;
