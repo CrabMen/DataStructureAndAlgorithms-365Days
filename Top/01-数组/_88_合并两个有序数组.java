@@ -29,10 +29,10 @@ class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int idx1 = m - 1, idx2 = n - 1, cur = nums1.length - 1;
         while (idx2 >= 0) {
-            if (idx1 >= 0 && nums1[idx1] < nums2[idx2]) {
-                nums[cur--] = nums1[idx1];
+            if (idx1 >= 0 && nums1[idx1] > nums2[idx2]) {
+                nums1[cur--] = nums1[idx1--];
             } else {
-                nums[cur--] = nums2[idx2];
+                nums1[cur--] = nums2[idx2--];
             }
         }
     }
