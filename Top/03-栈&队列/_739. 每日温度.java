@@ -31,4 +31,7 @@ class Solution {
         }
         return result;
     }
+
+    //倒推法
+    
 }
