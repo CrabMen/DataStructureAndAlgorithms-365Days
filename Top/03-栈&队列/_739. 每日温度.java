@@ -14,8 +14,13 @@ import java.util.Stack;
  */
 class Solution {
     public int[] dailyTemperatures(int[] T) {
+        return dailyTemperatures_stack(T);
+    }
 
-        if (T.length == 0) return T;
+    static int[] dailyTemperatures_stack(int[] T) {
+
+        if (T.length == 0)
+            return T;
 
         Stack<Integer> stack = new Stack<>();
         int[] result = new int[T.length];
@@ -23,15 +28,61 @@ class Solution {
             result[i] = 0;
         }
         for (int i = 0; i < T.length; i++) {
-            while (!stack.isEmpty() && T[i] > T[stack.peek()] ) {
-               int idx =  stack.pop();
-               result[idx] = i - idx;
+            while (!stack.isEmpty() && T[i] > T[stack.peek()]) {
+                int idx = stack.pop();
+                result[idx] = i - idx;
             }
             stack.push(i);
         }
         return result;
     }
 
-    //倒推法
-    
+    // 倒推法
+
+    public int[] dailyTemperatures_backward0(int[] T) {
+
+        if (T.length == 0)
+            return T;
+
+        int[] values = new int[T.length];
+
+        for (int i = T.length - 2; i >= 0; i--) {
+            int j = i + 1;
+            while (true) {
+                if (T[i] < T[j]) {
+                    values[i] = j - i;
+                    break;
+                } else if (values[j] == 0) {
+                    values[i] = 0;
+                    break;
+                } else if (T[i] == T[j]) {
+                    values[i] = values[j] + j - i;
+                    break;
+                } else {
+                    j = j + values[j];
+                }
+            }
+        }
+        return values;
+    }
+
+    public int[] dailyTemperatures_backward1(int[] T) {
+        int[] values = new int[T.length];
+        for (int i = T.length - 2; i >= 0; i--) {
+            int j = i + 1;
+            while (true) {
+                if (T[i] < T[j]) {
+                    values[i] = j - i;
+                    break;
+                } else if (values[j] == 0) {
+                    values[i] = 0;
+                    break;
+                }
+                // 当T[i] == T[j]的时候
+                j = j + values[j];
+            }
+        }
+        return values;
+    }
+
 }
