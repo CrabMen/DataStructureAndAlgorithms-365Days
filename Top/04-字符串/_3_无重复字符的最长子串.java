@@ -1,3 +1,7 @@
+import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
  * 
@@ -20,6 +24,43 @@
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0)
+            return 0;
+        char[] chars = s.toCharArray();
+        Map<Character, Integer> preIdxs = new Map();
+        preIdxs.put(chars[0], 0);
 
+        int li = 0, max = 0;
+        Integer pi;
+
+        for (int i = 1; i < chars.length; i++) {
+            // pi = preIdxs.getOrDefault(chars[i],-1);
+            pi = preIdxs.get(chars[i]);
+            if (pi != null && li <= pi) {
+                li = pi + 1;
+            }
+            preIdxs.put(chars[i], i);
+            max = Math.max(max, i - li + 1);
+        }
+        return max;
     }
+
+    /**
+     * 大佬的题解 使用滑动窗口已经max函数. 更容易理解
+    */
+    public int lengthOfLongestSubstring_slidingWindow(String s) {
+        if (s == null || s.length() == 0)
+            return 0;
+        char[] chars = s.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<>();
+        int li = 0, max = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if (map.containsKey(chars[i]))
+                li = Math.max(li, map.get(chars[i])+1);
+            map.put(chars[i], i);
+            max = Math.max(max, i - li + 1);
+        }
+        return max;
+    }
+
 }
