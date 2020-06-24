@@ -27,6 +27,8 @@ class Solution {
         if (s == null || s.length() == 0)
             return 0;
         char[] chars = s.toCharArray();
+        //如果因为题目限制,限制了字符类型,例如小写字母,则可以用26位的数组进行优化
+        //经过测试发现,该题干为单字符 即 0-128 
         Map<Character, Integer> preIdxs = new Map();
         preIdxs.put(chars[0], 0);
 
