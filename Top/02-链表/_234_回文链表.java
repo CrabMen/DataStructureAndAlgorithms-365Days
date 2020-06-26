@@ -19,7 +19,7 @@ public class ListNode {
     int val;
     ListNode next;
 
-    ListNode(int x) {
+    ListNode(int x) { 
         val = x;
     }
 }
@@ -32,7 +32,7 @@ class Solution {
      * 
      * 判断是否为回文。
      * 
-     * 恢复链表。
+     * 恢复链表。 
      * 
      * 返回结果。
      * 
@@ -50,7 +50,7 @@ class Solution {
         ListNode rHead = reverseList(mid.next);
         ListNode lHead = head;
         ListNode rOldHead = rHead;
-        
+         
         // 从lHead、rHead出发，判断是否为回文链表
         boolean result = true;
         while (rHead != null) {
