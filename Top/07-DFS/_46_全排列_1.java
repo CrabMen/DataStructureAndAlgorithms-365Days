@@ -36,50 +36,34 @@ import java.util.List;
  * 
  */
 class Solution {
-
-    private List<List<Integer>> list;
-    private int[] nums;
-    /** 用来保存每一层选择的数字 */
-    private int[] result;
-    /** 用来标记nums中的数字是否被使用过了 */
-    private boolean[] used;
-
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null)
             return null;
-        list = new ArrayList<>();
+
+        List<List<Integer>> result = new ArrayList<>();
         if (nums.length == 0)
-            return list;
-        this.nums = nums;
-        result = new int[nums.length];
-        used = new boolean[nums.length];
-        dfs(0);
-        return list;
+            return result;
+        // 用来保存每种组合的数组
+        List<Integer> elements = new ArrayList<>();
+        boolean[] visited = new boolean[nums.length];
+        dfs(result, nums, visited, elements);
+        return result;
     }
 
-    private void dfs(int idx) {
-        // 不能再往下搜索
-        if (idx == nums.length) {
-            List<Integer> resultList = new ArrayList<>();
-            for (int value : result) {
-                resultList.add(value);
-            }
-            list.add(resultList);
+    private void dfs(List<List<Integer>> result, int[] nums, boolean[] visited, List<Integer> elements) {
+
+        if (elements.size() == nums.length) {
+            result.add(new ArrayList<>(elements));
             return;
         }
-
-        // 枚举这一层所有可以做出的选择
         for (int i = 0; i < nums.length; i++) {
-            if (used[i])
+            if (visited[i])
                 continue;
-            result[idx] = nums[i];
-            used[i] = true;
-
-            dfs(idx + 1);
-
-            // 还原现场
-            used[i] = false;
+            visited[i] = true;
+            elements.add(nums[i]);
+            dfs(result, nums, visited, elements);
+            visited[i] = false;
+            elements.remove(elements.size() - 1);
         }
     }
-
 }
