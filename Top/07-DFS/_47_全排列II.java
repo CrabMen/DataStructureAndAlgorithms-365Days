@@ -47,14 +47,20 @@ class Solution {
         }
         // 枚举这一层所有可以做出的选择
         for (int i = idx; i < nums.length; i++) {
+            if (isRepeat(nums, idx, i))
+                continue;
             swap(nums, idx, i);
             dfs(idx + 1, nums, list);
             swap(nums, idx, i);
         }
     }
 
-    private isRepeat(int[]nums,int idx,int i){
-
+    private boolean isRepeat(int[] nums, int idx, int i) {
+        for (int j = idx; j < i; j++) {
+            if (nums[j] = nums[i])
+                return true;
+        }
+        return false;
     }
 
     private void swap(int[] nums, int i, int j) {
