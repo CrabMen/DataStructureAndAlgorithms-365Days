@@ -39,6 +39,8 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         if (nums.length < 3)
             return result;
+        // 排序
+        Arrays.sort(nums);
         // 用来扫描三元数的第一个元素
         int lastIdx = nums.length - 3;
         for (int i = 0; i <= lastIdx; i++) {
@@ -52,9 +54,11 @@ class Solution {
                 if (sumLr == remain) {
                     // 找到符合条件的三元组
                     result.add(Arrays.asList(nums[i], nums[l], nums[r]));
-                  //跳过相同的值 去重剪枝
-                  while(l<r && nums[l] == nums[l+1]) l++;
-                  while(l<r && nums[r] == nums[r-1]) r++;
+                    // 跳过相同的值 去重剪枝
+                    while (l < r && nums[l] == nums[l + 1])
+                        l++;
+                    while (l < r && nums[r] == nums[r - 1])
+                        r--;
                     l++;
                     r--;
                 } else if (sumLr < remain) {
