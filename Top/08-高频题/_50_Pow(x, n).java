@@ -34,7 +34,7 @@ class Solution {
         if (n == -1)
             return 1 / x;
         boolean odd = (n & 1) == 1;
-        // 因为右移运算符的问题 -1 右移多少位都是-1
+        // 因为右移运算符的问题 -1 右移多少位都是-1  负奇数右移和负奇数除以二不登记啊
         double half = myPow(x, n >> 1);
         half *= half;
         // x = (n<0)?(1/x):x;
